@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Wild Running</string>
+    <string name="invitation">¿Hasta qué nivel eres capaz de llegar?</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="forgotPassword">Olvidé mi contraseña</string>
+    <string name="acept">He leído y acepto los</string>
+    <string name="terms">términos y condiciones</string>
+    <string name="google">GOOGLE</string>
+    <string name="facebook">FACEBOOK</string>
 </resources>
