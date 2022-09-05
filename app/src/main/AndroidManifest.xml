@@ -14,6 +14,9 @@
         android:theme="@style/Theme.WildRunning"
         tools:targetApi="31">
         <activity
+            android:name=".TermsActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait">
@@ -26,7 +29,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
