@@ -7,6 +7,8 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.silveragonzalo.wildrunning.databinding.ActivityLoginBinding
@@ -37,6 +39,10 @@ class LoginActivity : AppCompatActivity() {
         etEmail = ui.etEmail
         etPassword = ui.etPassword
         mAuth = FirebaseAuth.getInstance()
+
+        manageButtonLogin()
+        etEmail.doOnTextChanged { text, start, before, count -> manageButtonLogin() }
+        etPassword.doOnTextChanged { text, start, before, count -> manageButtonLogin() }
     }
 
     public override fun onStart() {
@@ -53,6 +59,22 @@ class LoginActivity : AppCompatActivity() {
         startMain.addCategory(Intent.CATEGORY_HOME)
         startMain.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(startMain)
+    }
+
+    private fun manageButtonLogin() {
+        var btnLogin = ui.btnLogin
+        email = etEmail.text.toString()
+        password = etPassword.text.toString()
+
+        if(TextUtils.isEmpty(password) || !ValidateEmail.isEmail(email)) {
+            btnLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+            btnLogin.isEnabled = false
+        }
+        else {
+            btnLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+            btnLogin.isEnabled = true
+        }
+
     }
 
     fun login(view: View) {
